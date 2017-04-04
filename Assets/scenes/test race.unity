@@ -1507,6 +1507,7 @@ MonoBehaviour:
   raceHasBegun: 0
   finishedRace: 0
   jumpSpeed: 20000
+  flipTorque: 20000
   axleInfos:
   - leftWheel: {fileID: 2121561558}
     rightWheel: {fileID: 397160832}

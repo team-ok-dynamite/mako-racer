@@ -7,6 +7,7 @@ public class MakoController : MonoBehaviour
     public bool raceHasBegun;
     public bool finishedRace;
     public float jumpSpeed;
+    public float flipTorque;
     private uint fuelCount;
     private const uint FUEL_MAX = 100;
     private Rigidbody rb;
@@ -61,18 +62,28 @@ public class MakoController : MonoBehaviour
     private void handleJump()
     {
         bool jetOn = Input.GetButton("Jump");
+        // Determine whether the mako is upside down
+        Vector3 up = new Vector3(0, 0, 1);
+        up = rb.transform.TransformVector(up);
         float yForce = 0.0f;
+        
         if (jetOn && fuelCount > 0)
         {
-            yForce = jumpSpeed;
+            if (up.z < 0)
+            {
+                // If this is true, we've flipped over. Apply a torque to flip back up.
+                rb.AddRelativeTorque(new Vector3(0, 0, flipTorque));
+            }
+            else
+            {
+                rb.AddRelativeForce(new Vector3(0, jumpSpeed, 0));
+            }
             fuelCount -= 1;
         }
         else if (fuelCount < FUEL_MAX)
         {
             fuelCount += 1;
         }
-        Vector3 jumpVec = new Vector3(yForce, yForce, yForce);
-        rb.AddForce(jumpVec);
     }
 
     private void OnTriggerEnter(Collider other)
