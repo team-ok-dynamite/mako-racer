@@ -514,8 +514,8 @@ GameObject:
   m_Component:
   - component: {fileID: 414814781}
   - component: {fileID: 414814784}
-  - component: {fileID: 414814783}
   - component: {fileID: 414814782}
+  - component: {fileID: 414814783}
   m_Layer: 0
   m_Name: MakoCollider
   m_TagString: Untagged
@@ -569,18 +569,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &414814783
-BoxCollider:
+--- !u!136 &414814783
+CapsuleCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 65821150979024022, guid: e14dff8e12b1b4144b7362070fe2a8f8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 414814780}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.32258615
+  m_Height: 1.2831877
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &414814784
 MeshFilter:
@@ -1508,7 +1508,7 @@ MonoBehaviour:
   finishedRace: 0
   jumpSpeed: 20000
   flipTorque: 20000
-  maxPitchTorque: 5000
+  maxPitchTorque: 10000
   axleInfos:
   - leftWheel: {fileID: 2121561558}
     rightWheel: {fileID: 397160832}
