@@ -1508,6 +1508,7 @@ MonoBehaviour:
   finishedRace: 0
   jumpSpeed: 20000
   flipTorque: 20000
+  maxPitchTorque: 5000
   axleInfos:
   - leftWheel: {fileID: 2121561558}
     rightWheel: {fileID: 397160832}
@@ -1525,7 +1526,7 @@ MonoBehaviour:
     rightWheel: {fileID: 229427539}
     leftModel: {fileID: 280336363}
     rightModel: {fileID: 309880879}
-    motor: 0
+    motor: 1
     steering: 0
   maxMotorTorque: 400
   maxSteeringAngle: 30

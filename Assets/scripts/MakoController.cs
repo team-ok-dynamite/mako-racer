@@ -8,6 +8,8 @@ public class MakoController : MonoBehaviour
     public bool finishedRace;
     public float jumpSpeed;
     public float flipTorque;
+    public float maxPitchTorque;
+
     private uint fuelCount;
     private const uint FUEL_MAX = 100;
     private Rigidbody rb;
@@ -37,10 +39,10 @@ public class MakoController : MonoBehaviour
             return;
         }
 
-        handleJump();
-
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+        uint flyingWheelCount = 0;
+        WheelHit wheelHit;
 
         foreach (AxleInfo axleInfo in axleInfos)
         {
@@ -56,33 +58,38 @@ public class MakoController : MonoBehaviour
             }
             ApplyLocalPositionToVisuals(axleInfo.leftWheel, axleInfo.leftModel);
             ApplyLocalPositionToVisuals(axleInfo.rightWheel, axleInfo.rightModel);
+
+            if (!axleInfo.leftWheel.GetGroundHit(out wheelHit))
+                flyingWheelCount++;
+            if (!axleInfo.rightWheel.GetGroundHit(out wheelHit))
+                flyingWheelCount++;
         }
+
+        handleJump(flyingWheelCount >= 2);
     }
 
-    private void handleJump()
+    private void handleJump(bool flying)
     {
         bool jetOn = Input.GetButton("Jump");
-        // Determine whether the mako is upside down
-        Vector3 up = new Vector3(0, 0, 1);
-        up = rb.transform.TransformVector(up);
-        float yForce = 0.0f;
-        
+
         if (jetOn && fuelCount > 0)
         {
-            if (up.z < 0)
-            {
-                // If this is true, we've flipped over. Apply a torque to flip back up.
-                rb.AddRelativeTorque(new Vector3(0, 0, flipTorque));
-            }
-            else
-            {
-                rb.AddRelativeForce(new Vector3(0, jumpSpeed, 0));
-            }
+            rb.AddRelativeForce(new Vector3(0, jumpSpeed, 0));
             fuelCount -= 1;
         }
         else if (fuelCount < FUEL_MAX)
         {
             fuelCount += 1;
+        }
+
+        // When flying, the forward/backward axis becomes a control on the pitch of the mako
+        if (flying)
+        {
+            float pitch = maxPitchTorque * Input.GetAxis("Vertical");
+            if (pitch != 0)
+            {
+                rb.AddRelativeTorque(new Vector3(pitch, 0, 0));
+            }
         }
     }
 
