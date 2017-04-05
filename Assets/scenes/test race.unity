@@ -96,6 +96,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1880081129790764, guid: 0407739fa06cd8a4bad5246064f749f3,
     type: 2}
   m_PrefabInternal: {fileID: 788314422}
+--- !u!1 &220837370 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1576418557939148, guid: 0407739fa06cd8a4bad5246064f749f3,
+    type: 2}
+  m_PrefabInternal: {fileID: 788314422}
 --- !u!1 &352624912
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +329,11 @@ Prefab:
       propertyPath: terrain
       value: 
       objectReference: {fileID: 1087048656}
+    - target: {fileID: 114208298816622688, guid: 0407739fa06cd8a4bad5246064f749f3,
+        type: 2}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 220837370}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0407739fa06cd8a4bad5246064f749f3, type: 2}
   m_IsPrefabParent: 0
