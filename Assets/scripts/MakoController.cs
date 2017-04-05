@@ -7,8 +7,8 @@ public class MakoController : MonoBehaviour
     public bool raceHasBegun;
     public bool finishedRace;
     public float jumpSpeed;
-    public float flipTorque;
     public float maxPitchTorque;
+    public float maxYawTorque;
 
     private uint fuelCount;
     private const uint FUEL_MAX = 100;
@@ -86,10 +86,8 @@ public class MakoController : MonoBehaviour
         if (flying)
         {
             float pitch = maxPitchTorque * Input.GetAxis("Vertical");
-            if (pitch != 0)
-            {
-                rb.AddRelativeTorque(new Vector3(pitch, 0, 0));
-            }
+            float yaw = maxYawTorque * Input.GetAxis("Horizontal");
+            rb.AddRelativeTorque(new Vector3(pitch, yaw, 0));
         }
     }
 
