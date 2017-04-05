@@ -1076,7 +1076,7 @@ MonoBehaviour:
     rightWheel: {fileID: 146759984813939676}
     leftModel: {fileID: 1306172261957810}
     rightModel: {fileID: 1586442338772748}
-    motor: 0
+    motor: 1
     steering: 0
   - leftWheel: {fileID: 146843969291768216}
     rightWheel: {fileID: 146874973247278374}
@@ -1084,7 +1084,7 @@ MonoBehaviour:
     rightModel: {fileID: 1083407733517526}
     motor: 1
     steering: 0
-  maxMotorTorque: 400
+  maxMotorTorque: 1200
   maxSteeringAngle: 30
 --- !u!136 &136245272093687722
 CapsuleCollider:
