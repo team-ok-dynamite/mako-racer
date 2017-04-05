@@ -5,17 +5,21 @@ using UnityEngine;
 public class MapCanvasController : MonoBehaviour {
 
     public Canvas mapCanvas;
+    public GameObject map;
     public GameObject mako;
     public GameObject finishArea;
     public GameObject finishMapIcon;
     public GameObject makoMapIcon;
+    public GameObject terrain;
 
+    private Vector3 irlToMapScale;
     private bool alreadyHandledThisToggle;
 
 	void Start()
     {
         mapCanvas.enabled = false;
         alreadyHandledThisToggle = false;
+        setIrlToMapScale();
         setFinishLocation();
     }
 
@@ -24,6 +28,17 @@ public class MapCanvasController : MonoBehaviour {
         toggleMap();
         updateMakoLocation();
 	}
+
+    void setIrlToMapScale()
+    {
+        Vector3 terrainDimensions = terrain.GetComponent<Terrain>().terrainData.size;
+        RectTransform canvasRT = map.GetComponent<RectTransform>();
+        irlToMapScale = new Vector3(
+            canvasRT.rect.width / terrainDimensions.x,
+            0.0f,
+            canvasRT.rect.width / terrainDimensions.z
+        );
+    }
 
     void toggleMap()
     {
@@ -47,7 +62,7 @@ public class MapCanvasController : MonoBehaviour {
     void setFinishLocation()
     {
         Vector3 mapPosition = getMapPosition(finishArea.transform.position);
-        finishMapIcon.transform.Translate(mapPosition);
+        finishMapIcon.transform.localPosition = mapPosition;
     }
 
     void updateMakoLocation()
@@ -58,11 +73,11 @@ public class MapCanvasController : MonoBehaviour {
 
     Vector3 getMapPosition(Vector3 irlPosition)
     {
-        const float irlToMapScale = 2.5f;
         Vector3 mapPosition;
-        mapPosition.x = irlPosition.x / irlToMapScale;
-        mapPosition.y = irlPosition.z / irlToMapScale;
-        mapPosition.z = 0;
+        mapPosition.x = irlPosition.x * irlToMapScale.x;
+
+        mapPosition.y = irlPosition.z * irlToMapScale.z;
+        mapPosition.z = 0.0f;
         return mapPosition;
     }
 }

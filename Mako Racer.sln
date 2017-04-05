@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mako Racer.CSharp", "Mako Racer.CSharp.csproj", "{D2C3111E-7AD4-2050-9B35-8DF3AA0AD9D7}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{9F7D9DF1-0C17-6E80-0F5B-EEF2234C767C}") = "mako racer", "Assembly-CSharp.csproj", "{A6657391-C5C8-22E3-66DA-B62A9766CE68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D2C3111E-7AD4-2050-9B35-8DF3AA0AD9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2C3111E-7AD4-2050-9B35-8DF3AA0AD9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2C3111E-7AD4-2050-9B35-8DF3AA0AD9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2C3111E-7AD4-2050-9B35-8DF3AA0AD9D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6657391-C5C8-22E3-66DA-B62A9766CE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6657391-C5C8-22E3-66DA-B62A9766CE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6657391-C5C8-22E3-66DA-B62A9766CE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6657391-C5C8-22E3-66DA-B62A9766CE68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
